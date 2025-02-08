@@ -1,0 +1,133 @@
+/* Style général du footer */
+footer {
+  background-color: rgba(49,50,67,255); /* Couleur de fond sombre */
+  padding: 3rem 5% 1rem; /* Espacement interne : haut 3rem, côtés 5%, bas 1rem */
+  color: white; /* Texte en blanc */
+}
+
+/* Organisation du contenu en grille à 2 colonnes */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
+  gap: 2rem; /* Espacement entre les colonnes */
+  margin-bottom: 2rem;
+}
+
+/* Style des titres des sections */
+.footer-section h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Style des paragraphes */
+.footer-section p {
+  margin-bottom: 0.5rem;
+  color: #888; /* Texte en gris */
+}
+
+/* Mise en évidence du texte en gras */
+.footer-section p strong {
+  color: #e28743; /* Couleur orange */
+  font-weight: normal;
+}
+
+/* Conteneur des liens sociaux */
+.social-links {
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+/* Style des icônes de réseaux sociaux */
+.social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px; /* Taille de la case */
+  height: 35px;
+  background-color: #e28743; /* Fond orange */
+  color: white;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  text-decoration: none;
+}
+
+.social-links img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.social-links a:hover {
+  background-color: var(--orange);
+}
+
+/* Taille des icônes */
+.social-links i {
+  font-size: 1rem;
+}
+
+/* Style des listes */
+.footer-section ul {
+  list-style-type: square; /* Puces carrées */
+  padding-left: 1.2rem;
+  color: #e28743; /* Puces en orange */
+}
+
+/* Espacement entre les éléments de liste */
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+}
+
+/* Style des liens dans les listes */
+.footer-section ul li a {
+  color: #888; /* Texte en gris */
+  text-decoration: none;
+  transition: color 0.3s; /* Animation de la couleur au survol */
+}
+
+/* Effet au survol des liens */
+.footer-section ul li a:hover {
+  color: #e28743; /* Texte en orange au survol */
+}
+
+/* Section du bas du footer */
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation */
+  text-align: center;
+  color: #888;
+}
+
+/* Adaptations pour les petits écrans */
+@media (max-width: 992px) {
+  footer {
+    padding: 2rem 5% 1rem; /* Réduction du padding */
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr; /* 1 colonne */
+    gap: 1.5rem;
+    text-align: center; /* Centrage du texte */
+  }
+
+  .footer-section ul {
+    list-style-type: none; /* Suppression des puces */
+    padding-left: 0; /* Suppression de l'indentation */
+  }
+
+  .footer-section h3 {
+    font-size: 1.2rem; /* Réduction de la taille des titres */
+    margin-bottom: 1rem;
+  }
+
+  .footer-bottom {
+    margin-top: 1.5rem;
+    padding-top: 0.8rem;
+  }
+    
+  .social-links {
+      justify-content: center; /* Centrage horizontal */
+    }
+}

@@ -1,0 +1,248 @@
+/* Variables et reset */
+:root {
+    --primary-color: #f39c12;
+    --dark-blue: #1a1b2e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--dark-blue);
+    color: white;
+}
+
+/* Container du jeu */
+.game-container {
+    padding-top: 100px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+/* Informations du jeu */
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    background-color: rgba(26, 27, 46, 0.9);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.timer, .score, .moves {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+/* Grille de jeu */
+.memory-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* Cartes */
+.card {
+    position: relative;
+    aspect-ratio: 1;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    perspective: 1000px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
+
+.card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    backface-visibility: hidden;
+}
+
+.card.flipped {
+    transform: rotateX(360deg);
+}
+
+.card.flipped img {
+    display: block !important;
+}
+
+/* Styles spécifiques pour chaque taille de grille */
+[data-grid="4"] {
+    grid-template-columns: repeat(4, 1fr);
+}
+[data-grid="6"] {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 900px;
+}
+[data-grid="8"] {
+    grid-template-columns: repeat(8, 1fr);
+    max-width: 1000px;
+}
+[data-grid="10"] {
+    grid-template-columns: repeat(10, 1fr);
+    max-width: 1100px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .game-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .game-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .memory-grid {
+        gap: 0.5rem;
+    }
+}
+
+/* Styles de base pour la modale */
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Valeur élevée pour mettre la modale au-dessus de tout */
+}
+
+/* Affichage de la modale quand active */
+.success-modal.active {
+  display: flex;
+}
+
+/* Contenu de la modale */
+.success-modal-content {
+  background-color: #1a1b2e;
+  color: white;
+  padding: 2.5rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  animation: modalAppear 0.3s ease-out;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--primary-color);
+}
+
+/* Animation d'apparition de la modale */
+@keyframes modalAppear {
+  from {
+      transform: translateY(-50px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Titre de la modale */
+.success-modal-content h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Texte de la modale */
+.success-modal-content p {
+  line-height: 1.5;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+/* Container des boutons */
+.modal-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style des boutons */
+.modal-buttons .btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+/* Effet hover sur les boutons */
+.modal-buttons .btn-primary:hover {
+  background-color: #e67e22;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Effet actif sur les boutons */
+.modal-buttons .btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Style pour le lien en un bouton */
+.modal-buttons a.btn-primary {
+  display: block;
+  width: 100%;
+}
+
+/* Empêcher le scroll quand la modale est ouverte */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Media Queries pour la responsivité */
+@media screen and (max-width: 480px) {
+  .success-modal-content {
+      width: 95%;
+      padding: 1.5rem;
+      margin: 1rem;
+  }
+
+  .success-modal-content h2 {
+      font-size: 1.5rem;
+  }
+
+  .success-modal-content p {
+      font-size: 1.1rem;
+  }
+
+  .modal-buttons .btn-primary {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+  }
+}

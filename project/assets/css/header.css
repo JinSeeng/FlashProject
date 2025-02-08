@@ -1,0 +1,111 @@
+/* Responsive base font size */
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1200px) {
+  html { font-size: 15px; }
+}
+
+@media screen and (max-width: 992px) {
+  html { font-size: 14px; }
+}
+
+@media screen and (max-width: 768px) {
+  html { font-size: 13px; }
+}
+
+@media screen and (max-width: 480px) {
+  html { font-size: 12px; }
+}
+
+/* Style général du header */
+header {
+  padding: 1rem 5%;
+  background-color: rgba(26, 27, 46, 0.9);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Style de la barre de navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style du logo */
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Style des liens de navigation */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 2rem;
+  font-size: 1rem;
+}
+
+/* Cache l'icône du menu mobile sur les grands écrans */
+@media (min-width: 842px) {
+  .mobile-menu-icon {
+    display: none;
+  }
+}
+
+/* Adaptation pour les petits écrans (mobile) */
+@media (max-width: 841px) {
+  /* Cache le menu de navigation par défaut */
+  .nav-links {
+    display: none;
+  }
+
+  /* Style du menu mobile quand il est affiché */
+  .nav-links.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(26, 27, 46, 0.9);
+    padding: 1rem 0;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+  }
+
+  /* Ajustement de l'espacement des liens en mode mobile */
+  .nav-links.show a {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  /* Style de l'icône du menu hamburger */
+  .mobile-menu-icon {
+    display: block;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Responsive adjustments for small screens */
+  .logo {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    font-size: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .mobile-menu-icon {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,208 @@
+/* Section des liens d'authentification (login, inscription, mot de passe oublié) */
+.auth-links {
+  display: flex; /* Affichage flexible des éléments */
+  flex-direction: column; /* Empile les éléments verticalement */
+  align-items: center; /* Centre les éléments horizontalement */
+  gap: 1rem; /* Espace de 1rem entre chaque élément */
+  margin-top: 1.5rem; /* Marge supérieure */
+  text-align: center; /* Centre le texte */
+}
+
+/* Style des liens dans la section d'authentification */
+.auth-links a {
+  color: white; /* Couleur du texte en blanc */
+  text-decoration: none; /* Supprime le soulignement des liens */
+  font-size: 0.9rem; /* Taille de police */
+  transition: color 0.3s ease; /* Animation de changement de couleur */
+}
+
+/* Style spécifique pour le lien "mot de passe oublié" */
+.forgot-password {
+  color: var(--primary-color); /* Utilise la couleur primaire définie dans les variables */
+  font-weight: bold; /* Texte en gras */
+}
+
+/* Effet au survol des liens d'authentification */
+.auth-links a:hover {
+  color: var(--primary-color); /* Change la couleur au survol */
+}
+
+/* Style pour les liens d'inscription et de connexion */
+.register-link,
+.login-link {
+  font-weight: bold; /* Texte en gras */
+}
+
+/* Style du conteneur principal d'authentification */
+.auth-container {
+  margin: 20px;
+  width: calc(100% - 40px); /* Largeur totale moins les marges */
+  max-width: 500px; /* Largeur maximale */
+}
+
+/* Adaptation pour les petits écrans (mobile) */
+@media screen and (max-width: 480px) {
+  .auth-links {
+    gap: 0.8rem; /* Réduit l'espace entre les éléments */
+  }
+
+  .auth-links a {
+    font-size: 0.8rem; /* Réduit la taille de police */
+  }
+}
+
+/* Style de la section d'inscription */
+.signup-section {
+  min-height: 100vh; /* Hauteur minimum égale à la hauteur de la fenêtre */
+  display: flex;
+  align-items: center; /* Centre verticalement */
+  justify-content: center; /* Centre horizontalement */
+  padding: 8rem 1rem; /* Padding vertical et horizontal */
+}
+
+/* Style du conteneur d'authentification */
+.auth-container {
+  background-color: rgba(26, 27, 46, 0.9); /* Fond semi-transparent */
+  padding: 3rem;
+  border-radius: 10px; /* Coins arrondis */
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto; /* Centre le conteneur horizontalement */
+}
+
+/* Style du formulaire d'inscription */
+.signup-section .auth-form {
+  display: flex;
+  flex-direction: column; /* Empile les éléments verticalement */
+  width: 100%;
+}
+
+/* Style du titre h2 dans la section d'inscription */
+.signup-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Style des champs de saisie du formulaire */
+.signup-section .auth-form input {
+  width: 100%; /* Prend toute la largeur disponible */
+}
+
+/* Style du bouton d'inscription */
+.signup-section .auth-form button {
+  width: 100%; /* Prend toute la largeur disponible */
+}
+
+/* Styles de la modale */
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Changé de 0.8 à 0.5 pour un fond plus transparent */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Contenu de la modale */
+.success-modal-content {
+  background-color: #1a1b2e;
+  color: white;
+  padding: 2.5rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  animation: modalAppear 0.3s ease-out;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation d'apparition de la modale */
+@keyframes modalAppear {
+  from {
+      transform: translateY(-50px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Style du titre de la modale */
+.success-modal-content h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* Style du texte de la modale */
+.success-modal-content p {
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+/* Style des boutons dans la modale */
+.modal-buttons .btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Réduit légèrement l'espace entre les boutons */
+  width: 100%;
+}
+
+/* Effet au survol des boutons */
+.modal-buttons .btn-primary:hover {
+  background-color: #e67e22;
+  transform: translateY(-2px);
+}
+
+/* Responsive design pour petits écrans */
+@media screen and (max-width: 480px) {
+  .success-modal-content {
+      width: 85%;
+      padding: 1.5rem;
+  }
+
+  .success-modal-content h2 {
+      font-size: 1.2rem;
+  }
+
+  .modal-buttons .btn-primary {
+      padding: 0.8rem 1rem;
+  }
+}
+
+/* Styles spécifiques pour les messages d'erreur */
+.error-message {
+  background-color: rgba(255, 71, 87, 0.1);
+  border-left: 4px solid #ff4757;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.error-message p {
+  color: #ff4757;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Empêcher le défilement du fond quand la modale est ouverte */
+body.modal-open {
+  overflow: hidden;
+}
